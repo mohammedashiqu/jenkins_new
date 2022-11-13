@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    stages{
+        stage("Build"){
+            steps{
+                echo "my first step"
+            }
+        }
+        stage("Test"){
+            steps{
+                echo "very happy now"
+            }
+        }
+        stage("deploy"){
+            steps{
+                echo "this tep does deploying"
+            }
+        }
+    }
+}

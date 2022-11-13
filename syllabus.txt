@@ -1,0 +1,10 @@
+jenkins installation <done
+create freestyle project in jenkins for helloworld <done
+
+parameter? how to build parameter project?
+what is plugins? and how to install required plugins?
+what is maven?
+how to install maven and set path?
+how to create maven build using freestyle?
+
+how to setup smtp server on jenkins?

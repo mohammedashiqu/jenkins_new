@@ -1,0 +1,14 @@
+create a pipeline project paste cited script below,
+
+
+pipeline{
+    agent any
+    stages{
+        stage("startign process"){
+            steps{
+                echo "hello world"
+            }
+        }
+    }
+}
+

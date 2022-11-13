@@ -1,0 +1,21 @@
+downlaod maven from apache
+tar -xvzf filename
+
+and goto /home/ec2-user/.bash_profile
+
+add following lines
+"M2_HOME=/opt/maven"
+"M2=/opt/maven/bin"
+PATH=$PATH:$M2:M2_HOME
+
+source .bash_profile
+------------------------------------------------------------------------------------------------------------------------
+apt install maven -y
+and add path on "nano /etc/environment"
+logout and login
+execuet $PATH - you can see the updated path overthere.
+------------------------------------------------------------------------------------------------------------------------
+
+come to jenkins install "maven invoker plugin" and goto global config add path and all
+
+come to pipline script "maven+github" select and selct maven path as "maven" whatever the name you put in maven global config

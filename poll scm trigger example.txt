@@ -1,0 +1,6 @@
+create a git hub account and put index file configurec all details including brnach and credintial
+goto trigger section and select poll scm and put cron exprssion * * * * * for every one minute execution
+save and apply
+goto build and execute shell script "sudo cp index.html /var/www/html/" add this shell script overethere
+
+goto git hub and chnage new updates

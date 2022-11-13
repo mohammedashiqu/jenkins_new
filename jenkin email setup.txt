@@ -1,0 +1,15 @@
+goto manage_jenkins > configure systems > goto email notification
+
+smtp server -> smtp.gmail.com
+click advanced setup email address and passwd, for password goto gmail account > manage account > security > app password > generate password
+check ssl
+port number 465
+
+if you want to check test configuration, click test config and put email address and click test
+save and apply
+
+----------------------------------------
+
+goto extendable email notification
+fill everything same as email notification
+save and apply

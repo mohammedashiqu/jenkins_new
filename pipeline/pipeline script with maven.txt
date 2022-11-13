@@ -1,0 +1,69 @@
+pipeline{
+    agent any
+    environment{
+        PATH = "/opt/maven/bin:$PATH"
+    }
+    stages{
+        stage('Clone from Git Hub'){
+            steps{
+                git branch: 'main', url: 'https://github.com/mohammedashiqu/jenkins1.git'
+            }
+        }
+        stage('Build War File'){
+            steps{
+                sh "mvn clean install package"
+            }
+        }
+        stage('Deploy to Server'){
+            steps{
+                deploy adapters: [tomcat9(credentialsId: 'admin1', path: '', url: 'http://3.145.126.198:8080')], contextPath: null, war: '**/*.war'
+            }
+        }
+        stage('DEmail'){
+            steps{
+                emailext body: '''PROJECT NAME - $PROJECT_NAME 
+BUILD NUMBER - $BUILD_NUMBER 
+BUILD STATUS - $BUILD_STATUS:
+Check console output at $BUILD_URL to view the results.''', subject: 'Pipeline Hasbeen Passwd Successfully...!', to: 'ashiqumail@gmaiil.com'
+            }
+        }
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------
+pipeline{
+    agent any
+    environment{
+        PATH = "/opt/maven/bin:$PATH"
+    }
+    stages{
+        stage('Clone from Git Hub'){
+            steps{
+                git branch: 'main', url: 'https://github.com/mohammedashiqu/jenkins1.git'
+            }
+        }
+        stage('Build War File'){
+            steps{
+                sh "mvn clean install package"
+            }
+        }
+        stage('Deploy to Server'){
+            steps{
+                deploy adapters: [tomcat9(credentialsId: 'admin1', path: '', url: 'http://3.145.126.198:8080')], contextPath: null, war: '**/*.war'
+            }
+        }
+    }
+    post{
+        success{
+            emailext body: '''PROJECT NAME - $PROJECT_NAME 
+BUILD NUMBER - $BUILD_NUMBER 
+BUILD STATUS - $BUILD_STATUS:
+Check console output at $BUILD_URL to view the results.''', subject: 'Pipeline Hasbeen Passwd Successfully...!', to: 'ashiqumail@gmail.com'
+        }
+        failure{
+            emailext body: '''PROJECT NAME - $PROJECT_NAME 
+BUILD NUMBER - $BUILD_NUMBER 
+BUILD STATUS - $BUILD_STATUS:
+Check console output at $BUILD_URL to view the results.''', subject: 'Pipeline Got Failed :-(', to: 'ashiqumail@gmail.com'
+        }
+    }
+}

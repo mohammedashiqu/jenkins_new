@@ -1,0 +1,44 @@
+open jenkins
+create a new item opt free style
+goto build actions, select execute schell script
+
+eneter -> echo "hello world"
+apply and save
+goto project or dashboard and execute project
+goto console output will see success "if successfully added"
+-------------------------------------------------------------------
+
+git hub url - > https://github.com/pankajchhatri/hands-on-jenkins
+
+echo hello world by pulling code from git hub
+open jenkins
+goto sc or source code management > select github > put git link address over there
+??dont forget to download git on local server jenkin will out error "failed to load git link"
+come down and go goto execute shell script and write this command
+
+section_2/code
+./helloworld.sh
+
+apply and save
+goto dashboard and build
+
+---------------------------------------------------------------------
+run with parameter
+
+git hub url - > https://github.com/pankajchhatri/hands-on-jenkins
+
+first give any parameter, goto general and check "this project is parametrized"
+echo hello world by pulling code from git hub
+open jenkins
+goto sc or source code management > select github > put git link address over there
+??dont forget to download git on local server jenkin will out error "failed to load git link"
+come down and go goto execute shell script and write this command
+
+section_2/code
+./helloworld_parameter.sh
+
+apply and save
+goto dashboard and build
+
+
+

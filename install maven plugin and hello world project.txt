@@ -1,0 +1,11 @@
+install maven
+-------------
+yum install maven -y
+mvn -v
+get maven path and and goto global config tool paste path thre itself.
+
+goto dashboard > manage jenkins > manage plugins > search "maven integration" and install without restart.
+
+java helloworld project using maven
+-----------------------------------
+create a new job, select maven select scm, select pom file in buil section then build, put maven goal as "test install package"

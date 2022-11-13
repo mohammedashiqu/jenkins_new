@@ -1,0 +1,37 @@
+pipeline{
+    agent any
+    environment{
+        PATH = "/opt/maven/bin:$PATH"
+    }
+    stages{
+        stage('Clone from Git Hub'){
+            steps{
+                git branch: 'main', url: 'https://github.com/mohammedashiqu/jenkins1.git'
+            }
+        }
+        stage('Build War File'){
+            steps{
+                sh "mvn clean install package"
+            }
+        }
+        stage('Deploy with Ansible'){
+            steps{
+                sh 'ansible-playbook /etc/ansible/yaml.yml'
+            }
+        }
+    }
+    post{
+        success{
+            emailext body: '''PROJECT NAME - $PROJECT_NAME 
+BUILD NUMBER - $BUILD_NUMBER 
+BUILD STATUS - $BUILD_STATUS:
+Check console output at $BUILD_URL to view the results.''', subject: 'Pipeline Hasbeen Passwd Successfully...!', to: 'ashiqumail@gmail.com'
+        }
+        failure{
+            emailext body: '''PROJECT NAME - $PROJECT_NAME 
+BUILD NUMBER - $BUILD_NUMBER 
+BUILD STATUS - $BUILD_STATUS:
+Check console output at $BUILD_URL to view the results.''', subject: 'Pipeline Got Failed :-(', to: 'ashiqumail@gmail.com'
+        }
+    }
+}

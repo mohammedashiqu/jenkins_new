@@ -1,0 +1,10 @@
+hint--
+-------
+sudo yum list | grep java
+file $(which java) -  to find java location
+
+
+
+which java - to find location
+whereis java
+locate openejdk

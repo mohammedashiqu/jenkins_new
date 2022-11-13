@@ -1,0 +1,24 @@
+install repo
+-------------
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+upgrade repo
+------------
+sudo yum upgrade
+
+Add required dependencies for the jenkins package
+-------------------------------------------------
+yum install java -y
+suod amaozn-linux-extras install java-openjdk11 or sudo yum install java-11-openjdk 
+sudo yum install jenkins
+service jenkins start or systemctl start jenkins
+sudo systemctl daemon-reload
+open jenkins
+--------------
+open port 8080 and goto anny browser type ip address followed by :8080, eventually redirect to jenkins platform
+enter jenkins password, get the password from -> cat /var/lib/jenkins/secrets/initialAdminPassword
+
+permission on jenskins
+----------------------
+jenkins ALL=(ALL) NOPASSWD: ALL
